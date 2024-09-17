@@ -1,0 +1,29 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+library work;
+use work.all;
+
+  
+entity Leds is
+    port (
+          SW_Leds: in std_logic_vector (9 downto 0);     -- switches (SW(9) 0 SW(0))
+          LEDR_Leds: out std_logic_vector (9 downto 0);	 -- led's 
+          clock_Leds: in std_logic;
+			 reset_Leds: std_logc;
+    );
+end entity;
+	 
+architecture rtl of Leds is
+
+  process (clock_Leds, reset_Leds) 
+    begin  if(reset_Leds = '1') then
+      LEDR_Leds <= "0000000000";
+    elsif(RISING_EDGE(clock_Leds)) then
+      LEDR_Leds = SW_Leds(9 downto 0);
+    end if;
+  end process;
+ 
+ end architecture;
+  
+  

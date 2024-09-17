@@ -1,0 +1,86 @@
+|ClockWithLeds
+CLOCK_50 => ~NO_FANOUT~
+KEY[0] => LedsB:TheLeds.clock_Leds
+KEY[1] => LedsB:TheLeds.reset_Leds
+SW[0] => LedsB:TheLeds.SW_Leds[0]
+SW[1] => LedsB:TheLeds.SW_Leds[1]
+SW[2] => LedsB:TheLeds.SW_Leds[2]
+SW[3] => LedsB:TheLeds.SW_Leds[3]
+SW[4] => LedsB:TheLeds.SW_Leds[4]
+SW[5] => LedsB:TheLeds.SW_Leds[5]
+SW[6] => LedsB:TheLeds.SW_Leds[6]
+SW[7] => LedsB:TheLeds.SW_Leds[7]
+SW[8] => LedsB:TheLeds.SW_Leds[8]
+SW[9] => LedsB:TheLeds.SW_Leds[9]
+LEDR[0] << LedsB:TheLeds.LEDR_Leds[0]
+LEDR[1] << LedsB:TheLeds.LEDR_Leds[1]
+LEDR[2] << LedsB:TheLeds.LEDR_Leds[2]
+LEDR[3] << LedsB:TheLeds.LEDR_Leds[3]
+LEDR[4] << LedsB:TheLeds.LEDR_Leds[4]
+LEDR[5] << LedsB:TheLeds.LEDR_Leds[5]
+LEDR[6] << LedsB:TheLeds.LEDR_Leds[6]
+LEDR[7] << LedsB:TheLeds.LEDR_Leds[7]
+LEDR[8] << LedsB:TheLeds.LEDR_Leds[8]
+LEDR[9] << LedsB:TheLeds.LEDR_Leds[9]
+
+
+|ClockWithLeds|LedsB:TheLeds
+SW_Leds[0] => LEDR_Leds.IN0
+SW_Leds[0] => AndGate:TheAndGate.A
+SW_Leds[1] => LEDR_Leds.IN1
+SW_Leds[1] => AndGate:TheAndGate.B
+SW_Leds[2] => LEDR_Leds.IN0
+SW_Leds[2] => LEDR_Leds.IN0
+SW_Leds[3] => LEDR_Leds.IN1
+SW_Leds[3] => LEDR_Leds.IN1
+SW_Leds[4] => LEDR_Leds.IN0
+SW_Leds[4] => LEDR_Leds.IN0
+SW_Leds[5] => LEDR_Leds.IN1
+SW_Leds[5] => LEDR_Leds.IN1
+SW_Leds[6] => LEDR_Leds.IN0
+SW_Leds[6] => LEDR_Leds.IN0
+SW_Leds[7] => LEDR_Leds.IN1
+SW_Leds[7] => LEDR_Leds.IN1
+SW_Leds[8] => LEDR_Leds.IN0
+SW_Leds[8] => LEDR_Leds.IN0
+SW_Leds[9] => LEDR_Leds.IN1
+SW_Leds[9] => LEDR_Leds.IN1
+LEDR_Leds[0] <= AndGate:TheAndGate.X
+LEDR_Leds[1] <= LEDR_Leds[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDR_Leds[2] <= LEDR_Leds[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDR_Leds[3] <= LEDR_Leds[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDR_Leds[4] <= LEDR_Leds[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDR_Leds[5] <= LEDR_Leds[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDR_Leds[6] <= LEDR_Leds[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDR_Leds[7] <= LEDR_Leds[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDR_Leds[8] <= LEDR_Leds[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDR_Leds[9] <= LEDR_Leds[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock_Leds => AndGate:TheAndGate.clock_AndGate
+clock_Leds => LEDR_Leds[1]~reg0.CLK
+clock_Leds => LEDR_Leds[2]~reg0.CLK
+clock_Leds => LEDR_Leds[3]~reg0.CLK
+clock_Leds => LEDR_Leds[4]~reg0.CLK
+clock_Leds => LEDR_Leds[5]~reg0.CLK
+clock_Leds => LEDR_Leds[6]~reg0.CLK
+clock_Leds => LEDR_Leds[7]~reg0.CLK
+clock_Leds => LEDR_Leds[8]~reg0.CLK
+clock_Leds => LEDR_Leds[9]~reg0.CLK
+reset_Leds => LEDR_Leds[1]~reg0.PRESET
+reset_Leds => LEDR_Leds[2]~reg0.ACLR
+reset_Leds => LEDR_Leds[3]~reg0.PRESET
+reset_Leds => LEDR_Leds[4]~reg0.ACLR
+reset_Leds => LEDR_Leds[5]~reg0.PRESET
+reset_Leds => LEDR_Leds[6]~reg0.ACLR
+reset_Leds => LEDR_Leds[7]~reg0.PRESET
+reset_Leds => LEDR_Leds[8]~reg0.ACLR
+reset_Leds => LEDR_Leds[9]~reg0.PRESET
+FromAnd => ~NO_FANOUT~
+
+
+|ClockWithLeds|LedsB:TheLeds|AndGate:TheAndGate
+A => X.IN0
+B => X.IN1
+X <= X~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock_AndGate => X~reg0.CLK
+
+

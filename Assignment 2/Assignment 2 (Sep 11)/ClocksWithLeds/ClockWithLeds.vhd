@@ -1,0 +1,107 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+
+  
+entity ClockWithLeds is
+    port (
+          CLOCK_50: in std_logic;                   -- 50MHz clock in the DE10_Lite board
+          KEY: in std_logic_vector (1 downto 0);    -- keys or buttons (KEY(0)- KEY(1))
+          SW: in std_logic_vector (9 downto 0);     -- switches (SW(9) 0 SW(0))
+          LEDR: out std_logic_vector (9 downto 0));	 -- led's 
+
+end entity;
+	 
+architecture rtl of ClockWithLeds is
+  component LedsB
+    port (
+          SW_Leds: in std_logic_vector (9 downto 0);     -- switches (SW(9) 0 SW(0))
+          LEDR_Leds: out std_logic_vector (9 downto 0);	 -- led's 
+          clock_Leds: in std_logic;
+			 reset_Leds: std_logic);
+  end component;
+  
+  signal  reset       	: std_logic;
+  signal  clock			: std_logic;
+  signal counter_set    : std_logic := '0';
+  signal flipflops      : std_logic_vector(1 downto 0) := (others => '0');
+  signal clk_divide_count1 	: std_logic_vector(31 downto 0) := (others => '0'); 	
+  signal slow_clk1 		: std_logic := '0';	
+  signal counter_out    : std_logic_vector(31 downto 0) := (others => '0'); 	
+  constant counter_size : Integer := 16;
+
+
+begin
+  reset <= NOT KEY(1);   -- KEY(1) is reset
+
+--*****************************************CLOCK***********************
+--*********************************************************************
+--option 1: key(0) as the clock (need a deboncing circuit)
+--option 2: slow clock (10Hz)
+--option 3: 50MHz clock
+
+
+--option 1: key(0) as the clock (need a deboncing circuit)
+-- reset (clock) key debouncing
+-- KEY(0) as the clock (because 50MHz is too fast)
+-- But it does not work okay; need debouncing circuit
+
+  clock <= NOT KEY(0);
+--  clock <= slow_clk1;
+  counter_set <= flipflops(0) xor flipflops(1);
+
+  process(CLOCK_50)
+  begin
+    if (CLOCK_50'event and CLOCK_50 = '1') then
+      flipflops(0) <= NOT KEY(0);
+      flipflops(1) <= flipflops(0);
+      if (counter_set = '1') then
+        counter_out <= (OTHERS => '0');
+      elsif (counter_out(counter_size) = '0') then
+        counter_out <= counter_out +1;
+      else
+        --clock <= flipflops(1);
+      end if;
+    end if;
+  end process;
+------ reset (clock) key debouncing
+
+
+--option 2: slow clock (10Hz)
+--clk <= slow_clk1;       -- 10Hz clock in the DE10_Lite board
+------ Slow clock begin ------
+  process(CLOCK_50)
+  begin
+ 	 if rising_edge(CLOCK_50) then
+		if (slow_clk1 = '0') then
+			if (clk_divide_count1 >= 5000000) then	--50MHz clock counting to 5 million, therefore slow clock will have period of 0.1s [(1/(50*10^6))*(5*10^6) = 0.1]
+				clk_divide_count1 <= (others => '0');	--Reset clock divider
+				slow_clk1 <= '1';				--Pulse slow_clk for 0.1 s
+			else
+				clk_divide_count1 <= clk_divide_count1 + 1 ;	--Increment clk_divide_count, NB this is not the output counter
+				--slow_clk1 <= '0';
+			end if;
+      end if;
+
+      if (slow_clk1 = '1') then
+		  if (clk_divide_count1 >= 5000000) then  	--50MHz clock counting to 5 million, therefore slow clock will have period of 0.1s [(1/(50*10^6))*(5*10^6) = 0.1]
+	       clk_divide_count1 <= (others => '0');	--Reset clock divider
+		    slow_clk1 <= '0';				--Pulse slow_clk for 0.1s
+	     else
+		    clk_divide_count1 <= clk_divide_count1 + 1 ;	--Increment clk_divide_count, NB this is not the output counter
+			 --slow_clk1 <= '1';
+		  end if;
+      end if;
+	 end if;
+  end process;
+------ Slow clock end ------
+
+    TheLeds : LedsB
+    port map (
+	   clock_Leds=>clock,
+	 	reset_Leds=>reset,
+		SW_Leds=>SW,
+      LEDR_Leds=>LEDR);
+	 
+end architecture;
