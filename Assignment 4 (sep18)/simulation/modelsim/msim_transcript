@@ -1,0 +1,112 @@
+# Reading pref.tcl
+# do microcomputer_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/inst_mem_128B.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 18:43:40 on Sep 16,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/inst_mem_128B.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity inst_memory_128B
+# -- Compiling architecture rtl of inst_memory_128B
+# End time: 18:43:40 on Sep 16,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/data_mem_64B.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 18:43:40 on Sep 16,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/data_mem_64B.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity data_memory_64B
+# -- Compiling architecture rtl of data_memory_64B
+# End time: 18:43:40 on Sep 16,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/alu_32.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 18:43:40 on Sep 16,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/alu_32.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ALU_32
+# -- Compiling architecture behavioural of ALU_32
+# End time: 18:43:40 on Sep 16,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/hex.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 18:43:40 on Sep 16,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/hex.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Compiling entity hex
+# -- Compiling architecture behavioural of hex
+# End time: 18:43:40 on Sep 16,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/mips.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 18:43:40 on Sep 16,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/mips.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Compiling entity mips
+# -- Compiling architecture rtl of mips
+# End time: 18:43:41 on Sep 16,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/ALU.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 18:43:41 on Sep 16,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/ALU.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ALU
+# -- Compiling architecture behavioural of ALU
+# End time: 18:43:41 on Sep 16,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 18:43:41 on Sep 16,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity microcomputer
+# -- Compiling architecture rtl of microcomputer
+# ** Warning: C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd(232): (vcom-1445) Duplicate signal "aluout" found in sensitivity list.
+# -- Loading entity hex
+# ** Error (suppressible): C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd(347): (vcom-1141) Identifier "hex" does not identify a component declaration.
+# ** Error (suppressible): C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd(348): (vcom-1141) Identifier "hex" does not identify a component declaration.
+# ** Error (suppressible): C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd(349): (vcom-1141) Identifier "hex" does not identify a component declaration.
+# ** Error (suppressible): C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd(350): (vcom-1141) Identifier "hex" does not identify a component declaration.
+# ** Error (suppressible): C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd(351): (vcom-1141) Identifier "hex" does not identify a component declaration.
+# ** Error (suppressible): C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd(352): (vcom-1141) Identifier "hex" does not identify a component declaration.
+# ** Note: C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd(354): VHDL Compiler exiting
+# End time: 18:43:41 on Sep 16,2024, Elapsed time: 0:00:00
+# Errors: 6, Warnings: 1
+# ** Error: C:/intelFPGA/20.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./microcomputer_run_msim_rtl_vhdl.do line 14
+# C:/intelFPGA/20.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -93 -work work {C:/Users/navee/OneDrive/Documents/eec18/JAN29_Assignment/microcomputer.vhd}"
+# Load canceled
