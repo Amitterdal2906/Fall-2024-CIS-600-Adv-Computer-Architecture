@@ -1,0 +1,41 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
+
+  
+entity ALU is
+    port(
+	 		funct_alu : in std_logic_vector(5 downto 0);  	-- control
+			A_alu : in std_logic;  	 								-- A input
+			B_alu : in std_logic;  	 								-- B input
+			carryin_alu : in std_logic;		-- arithmetic carry in 
+			ALUout_alu : out std_logic;  						-- result
+			carryout_alu : out std_logic);					-- arithmetic carry out
+end ALU ;
+
+architecture behavioural of ALU is
+    signal Operation: std_logic_vector(1 downto 0);
+    signal Ainvert, Binvert, a_in, b_in, result, set: std_logic;
+begin
+
+  with funct_alu select
+    result <= A_alu and B_alu when "100100", -- AND operation     
+              A_alu or B_alu when "100101" , -- OR operation
+              A_alu xor B_alu when "100110", -- xor operation
+              A_alu nor B_alu when "100111", -- xor operation
+              (A_alu xor B_alu) xor carryin_alu when "100000", -- add operation
+              (A_alu xor (not B_alu)) xor carryin_alu when "100010", -- sub operation
+              '0' when others;
+
+    --Operation control for adder    
+  with funct_alu select
+    carryout_alu <= ((A_alu and B_alu) or (carryin_alu and B_alu)) or (A_alu and carryin_alu) when "100000", -- add operation
+                    ((A_alu and (not B_alu)) or (carryin_alu and (not B_alu))) or (A_alu and carryin_alu) when "100010", -- sub operation
+                    '0' when others;
+    --result bit
+    ALUout_alu <= result;
+
+    
+end behavioural;
+

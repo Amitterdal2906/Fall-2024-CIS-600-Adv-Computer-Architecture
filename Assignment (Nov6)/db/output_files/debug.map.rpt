@@ -1,0 +1,1137 @@
+Analysis & Synthesis report for debug
+Wed Nov  6 18:06:19 2024
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Port Connectivity Checks: "DataMemory:My_DataMemory"
+ 14. Port Connectivity Checks: "ALU_32:My_ALU_32|ALU:\alubits:31:ALU_i"
+ 15. Port Connectivity Checks: "ALU_32:My_ALU_32"
+ 16. Post-Synthesis Netlist Statistics for Top Partition
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Nov  6 18:06:19 2024          ;
+; Quartus Prime Version              ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                      ; debug                                          ;
+; Top-level Entity Name              ; debug                                          ;
+; Family                             ; MAX 10                                         ;
+; Total logic elements               ; 2,304                                          ;
+;     Total combinational functions  ; 1,962                                          ;
+;     Dedicated logic registers      ; 440                                            ;
+; Total registers                    ; 440                                            ;
+; Total pins                         ; 65                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
+; UFM blocks                         ; 0                                              ;
+; ADC blocks                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                    ;
+; Top-level entity name                                            ; debug              ; debug              ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 10          ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 10          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.2%      ;
+;     Processor 3            ;   0.2%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
+;     Processor 7            ;   0.1%      ;
+;     Processors 8-10        ;   0.1%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                     ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                              ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------+---------+
+; debug.vhd                        ; yes             ; User VHDL File  ; C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd             ;         ;
+; alu.vhd                          ; yes             ; User VHDL File  ; C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd               ;         ;
+; hex.vhd                          ; yes             ; User VHDL File  ; C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/hex.vhd               ;         ;
+; alu_32.vhd                       ; yes             ; User VHDL File  ; C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd            ;         ;
+; InstructionMemory.vhd            ; yes             ; User VHDL File  ; C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/InstructionMemory.vhd ;         ;
+; DataMemory.vhd                   ; yes             ; User VHDL File  ; C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd        ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimated Total logic elements              ; 2,304        ;
+;                                             ;              ;
+; Total combinational functions               ; 1962         ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 1328         ;
+;     -- 3 input functions                    ; 514          ;
+;     -- <=2 input functions                  ; 120          ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 1847         ;
+;     -- arithmetic mode                      ; 115          ;
+;                                             ;              ;
+; Total registers                             ; 440          ;
+;     -- Dedicated logic registers            ; 440          ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 65           ;
+;                                             ;              ;
+; Embedded Multiplier 9-bit elements          ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; KEY[0]~input ;
+; Maximum fan-out                             ; 440          ;
+; Total fan-out                               ; 8521         ;
+; Average fan-out                             ; 3.37         ;
++---------------------------------------------+--------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                      ;
++-----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node                    ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                             ; Entity Name        ; Library Name ;
++-----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------+--------------------+--------------+
+; |debug                                        ; 1962 (286)          ; 440 (56)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 65   ; 0            ; 0          ; |debug                                          ; debug              ; work         ;
+;    |ALU_32:My_ALU_32|                         ; 1256 (949)          ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32                         ; ALU_32             ; work         ;
+;       |ALU:ALU_0|                             ; 6 (6)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:ALU_0               ; ALU                ; work         ;
+;       |ALU:\alubits:10:ALU_i|                 ; 10 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:10:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:11:ALU_i|                 ; 10 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:11:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:12:ALU_i|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:12:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:13:ALU_i|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:13:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:14:ALU_i|                 ; 10 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:14:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:15:ALU_i|                 ; 10 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:15:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:16:ALU_i|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:16:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:17:ALU_i|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:17:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:18:ALU_i|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:18:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:19:ALU_i|                 ; 10 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:19:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:1:ALU_i|                  ; 12 (12)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:1:ALU_i    ; ALU                ; work         ;
+;       |ALU:\alubits:20:ALU_i|                 ; 10 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:20:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:21:ALU_i|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:21:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:22:ALU_i|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:22:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:23:ALU_i|                 ; 16 (16)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:23:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:24:ALU_i|                 ; 11 (11)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:24:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:25:ALU_i|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:25:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:26:ALU_i|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:26:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:27:ALU_i|                 ; 10 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:27:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:28:ALU_i|                 ; 10 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:28:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:29:ALU_i|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:29:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:2:ALU_i|                  ; 13 (13)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:2:ALU_i    ; ALU                ; work         ;
+;       |ALU:\alubits:30:ALU_i|                 ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:30:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:31:ALU_i|                 ; 10 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:31:ALU_i   ; ALU                ; work         ;
+;       |ALU:\alubits:3:ALU_i|                  ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:3:ALU_i    ; ALU                ; work         ;
+;       |ALU:\alubits:4:ALU_i|                  ; 12 (12)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:4:ALU_i    ; ALU                ; work         ;
+;       |ALU:\alubits:5:ALU_i|                  ; 8 (8)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:5:ALU_i    ; ALU                ; work         ;
+;       |ALU:\alubits:6:ALU_i|                  ; 10 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:6:ALU_i    ; ALU                ; work         ;
+;       |ALU:\alubits:7:ALU_i|                  ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:7:ALU_i    ; ALU                ; work         ;
+;       |ALU:\alubits:8:ALU_i|                  ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:8:ALU_i    ; ALU                ; work         ;
+;       |ALU:\alubits:9:ALU_i|                  ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|ALU_32:My_ALU_32|ALU:\alubits:9:ALU_i    ; ALU                ; work         ;
+;    |DataMemory:My_DataMemory|                 ; 340 (340)           ; 384 (384)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|DataMemory:My_DataMemory                 ; DataMemory         ; work         ;
+;    |Instruction_Memory:My_Instruction_Memory| ; 38 (38)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|Instruction_Memory:My_Instruction_Memory ; Instruction_Memory ; work         ;
+;    |hex:h0|                                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|hex:h0                                   ; hex                ; work         ;
+;    |hex:h1|                                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|hex:h1                                   ; hex                ; work         ;
+;    |hex:h2|                                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|hex:h2                                   ; hex                ; work         ;
+;    |hex:h3|                                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|hex:h3                                   ; hex                ; work         ;
+;    |hex:h4|                                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|hex:h4                                   ; hex                ; work         ;
+;    |hex:h5|                                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |debug|hex:h5                                   ; hex                ; work         ;
++-----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------+--------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                  ;
++-----------------------------------------------------+-----------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal   ; Free of Timing Hazards ;
++-----------------------------------------------------+-----------------------+------------------------+
+; ALU_32:My_ALU_32|set[0]                             ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[1]                             ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[2]                             ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[3]                             ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[4]                             ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[5]                             ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[6]                             ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[7]                             ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[8]                             ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[9]                             ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[10]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[11]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[12]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[13]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[14]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[15]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; plusone4[0]                                         ; plusone5[0]           ; yes                    ;
+; plusone4[1]                                         ; plusone5[0]           ; yes                    ;
+; plusone4[2]                                         ; plusone5[0]           ; yes                    ;
+; plusone4[3]                                         ; plusone5[0]           ; yes                    ;
+; plusone5[0]                                         ; plusone5[0]           ; yes                    ;
+; plusone5[1]                                         ; plusone5[0]           ; yes                    ;
+; plusone5[2]                                         ; plusone5[0]           ; yes                    ;
+; plusone5[3]                                         ; plusone5[0]           ; yes                    ;
+; ALU_32:My_ALU_32|set[31]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[30]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[29]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[28]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[27]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[26]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[25]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[24]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[23]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[22]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[21]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[20]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[19]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[18]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[17]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; ALU_32:My_ALU_32|set[16]                            ; ALU_32:My_ALU_32|Mux1 ; yes                    ;
+; Number of user-specified and inferred latches = 40  ;                       ;                        ;
++-----------------------------------------------------+-----------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; Registers[1][11]                        ; Merged with Registers[1][10]           ;
+; Registers[1][12]                        ; Merged with Registers[1][10]           ;
+; Registers[1][13]                        ; Merged with Registers[1][10]           ;
+; Registers[1][14]                        ; Merged with Registers[1][10]           ;
+; Registers[1][15]                        ; Merged with Registers[1][10]           ;
+; Registers[1][16]                        ; Merged with Registers[1][10]           ;
+; Registers[1][17]                        ; Merged with Registers[1][10]           ;
+; Registers[1][18]                        ; Merged with Registers[1][10]           ;
+; Registers[1][19]                        ; Merged with Registers[1][10]           ;
+; Registers[1][1]                         ; Merged with Registers[1][10]           ;
+; Registers[1][20]                        ; Merged with Registers[1][10]           ;
+; Registers[1][21]                        ; Merged with Registers[1][10]           ;
+; Registers[1][22]                        ; Merged with Registers[1][10]           ;
+; Registers[1][23]                        ; Merged with Registers[1][10]           ;
+; Registers[1][24]                        ; Merged with Registers[1][10]           ;
+; Registers[1][25]                        ; Merged with Registers[1][10]           ;
+; Registers[1][26]                        ; Merged with Registers[1][10]           ;
+; Registers[1][27]                        ; Merged with Registers[1][10]           ;
+; Registers[1][28]                        ; Merged with Registers[1][10]           ;
+; Registers[1][29]                        ; Merged with Registers[1][10]           ;
+; Registers[1][2]                         ; Merged with Registers[1][10]           ;
+; Registers[1][30]                        ; Merged with Registers[1][10]           ;
+; Registers[1][31]                        ; Merged with Registers[1][10]           ;
+; Registers[1][3]                         ; Merged with Registers[1][10]           ;
+; Registers[1][4]                         ; Merged with Registers[1][10]           ;
+; Registers[1][5]                         ; Merged with Registers[1][10]           ;
+; Registers[1][6]                         ; Merged with Registers[1][10]           ;
+; Registers[1][7]                         ; Merged with Registers[1][10]           ;
+; Registers[1][8]                         ; Merged with Registers[1][10]           ;
+; Registers[1][9]                         ; Merged with Registers[1][10]           ;
+; Registers[2][0]                         ; Merged with Registers[1][10]           ;
+; Registers[2][10]                        ; Merged with Registers[1][10]           ;
+; Registers[2][11]                        ; Merged with Registers[1][10]           ;
+; Registers[2][12]                        ; Merged with Registers[1][10]           ;
+; Registers[2][13]                        ; Merged with Registers[1][10]           ;
+; Registers[2][14]                        ; Merged with Registers[1][10]           ;
+; Registers[2][15]                        ; Merged with Registers[1][10]           ;
+; Registers[2][16]                        ; Merged with Registers[1][10]           ;
+; Registers[2][17]                        ; Merged with Registers[1][10]           ;
+; Registers[2][18]                        ; Merged with Registers[1][10]           ;
+; Registers[2][19]                        ; Merged with Registers[1][10]           ;
+; Registers[2][20]                        ; Merged with Registers[1][10]           ;
+; Registers[2][21]                        ; Merged with Registers[1][10]           ;
+; Registers[2][22]                        ; Merged with Registers[1][10]           ;
+; Registers[2][23]                        ; Merged with Registers[1][10]           ;
+; Registers[2][24]                        ; Merged with Registers[1][10]           ;
+; Registers[2][25]                        ; Merged with Registers[1][10]           ;
+; Registers[2][26]                        ; Merged with Registers[1][10]           ;
+; Registers[2][27]                        ; Merged with Registers[1][10]           ;
+; Registers[2][28]                        ; Merged with Registers[1][10]           ;
+; Registers[2][29]                        ; Merged with Registers[1][10]           ;
+; Registers[2][2]                         ; Merged with Registers[1][10]           ;
+; Registers[2][30]                        ; Merged with Registers[1][10]           ;
+; Registers[2][31]                        ; Merged with Registers[1][10]           ;
+; Registers[2][3]                         ; Merged with Registers[1][10]           ;
+; Registers[2][4]                         ; Merged with Registers[1][10]           ;
+; Registers[2][5]                         ; Merged with Registers[1][10]           ;
+; Registers[2][6]                         ; Merged with Registers[1][10]           ;
+; Registers[2][7]                         ; Merged with Registers[1][10]           ;
+; Registers[2][8]                         ; Merged with Registers[1][10]           ;
+; Registers[2][9]                         ; Merged with Registers[1][10]           ;
+; Registers[3][10]                        ; Merged with Registers[1][10]           ;
+; Registers[3][11]                        ; Merged with Registers[1][10]           ;
+; Registers[3][12]                        ; Merged with Registers[1][10]           ;
+; Registers[3][13]                        ; Merged with Registers[1][10]           ;
+; Registers[3][14]                        ; Merged with Registers[1][10]           ;
+; Registers[3][15]                        ; Merged with Registers[1][10]           ;
+; Registers[3][16]                        ; Merged with Registers[1][10]           ;
+; Registers[3][17]                        ; Merged with Registers[1][10]           ;
+; Registers[3][18]                        ; Merged with Registers[1][10]           ;
+; Registers[3][19]                        ; Merged with Registers[1][10]           ;
+; Registers[3][20]                        ; Merged with Registers[1][10]           ;
+; Registers[3][21]                        ; Merged with Registers[1][10]           ;
+; Registers[3][22]                        ; Merged with Registers[1][10]           ;
+; Registers[3][23]                        ; Merged with Registers[1][10]           ;
+; Registers[3][24]                        ; Merged with Registers[1][10]           ;
+; Registers[3][25]                        ; Merged with Registers[1][10]           ;
+; Registers[3][26]                        ; Merged with Registers[1][10]           ;
+; Registers[3][27]                        ; Merged with Registers[1][10]           ;
+; Registers[3][28]                        ; Merged with Registers[1][10]           ;
+; Registers[3][29]                        ; Merged with Registers[1][10]           ;
+; Registers[3][2]                         ; Merged with Registers[1][10]           ;
+; Registers[3][30]                        ; Merged with Registers[1][10]           ;
+; Registers[3][31]                        ; Merged with Registers[1][10]           ;
+; Registers[3][3]                         ; Merged with Registers[1][10]           ;
+; Registers[3][4]                         ; Merged with Registers[1][10]           ;
+; Registers[3][5]                         ; Merged with Registers[1][10]           ;
+; Registers[3][6]                         ; Merged with Registers[1][10]           ;
+; Registers[3][7]                         ; Merged with Registers[1][10]           ;
+; Registers[3][8]                         ; Merged with Registers[1][10]           ;
+; Registers[3][9]                         ; Merged with Registers[1][10]           ;
+; Registers[4][0]                         ; Merged with Registers[1][10]           ;
+; Registers[4][10]                        ; Merged with Registers[1][10]           ;
+; Registers[4][11]                        ; Merged with Registers[1][10]           ;
+; Registers[4][12]                        ; Merged with Registers[1][10]           ;
+; Registers[4][13]                        ; Merged with Registers[1][10]           ;
+; Registers[4][14]                        ; Merged with Registers[1][10]           ;
+; Registers[4][15]                        ; Merged with Registers[1][10]           ;
+; Registers[4][16]                        ; Merged with Registers[1][10]           ;
+; Registers[4][17]                        ; Merged with Registers[1][10]           ;
+; Registers[4][18]                        ; Merged with Registers[1][10]           ;
+; Registers[4][19]                        ; Merged with Registers[1][10]           ;
+; Registers[4][1]                         ; Merged with Registers[1][10]           ;
+; Registers[4][20]                        ; Merged with Registers[1][10]           ;
+; Registers[4][21]                        ; Merged with Registers[1][10]           ;
+; Registers[4][22]                        ; Merged with Registers[1][10]           ;
+; Registers[4][23]                        ; Merged with Registers[1][10]           ;
+; Registers[4][24]                        ; Merged with Registers[1][10]           ;
+; Registers[4][25]                        ; Merged with Registers[1][10]           ;
+; Registers[4][26]                        ; Merged with Registers[1][10]           ;
+; Registers[4][27]                        ; Merged with Registers[1][10]           ;
+; Registers[4][28]                        ; Merged with Registers[1][10]           ;
+; Registers[4][29]                        ; Merged with Registers[1][10]           ;
+; Registers[4][30]                        ; Merged with Registers[1][10]           ;
+; Registers[4][31]                        ; Merged with Registers[1][10]           ;
+; Registers[4][3]                         ; Merged with Registers[1][10]           ;
+; Registers[4][4]                         ; Merged with Registers[1][10]           ;
+; Registers[4][5]                         ; Merged with Registers[1][10]           ;
+; Registers[4][6]                         ; Merged with Registers[1][10]           ;
+; Registers[4][7]                         ; Merged with Registers[1][10]           ;
+; Registers[4][8]                         ; Merged with Registers[1][10]           ;
+; Registers[4][9]                         ; Merged with Registers[1][10]           ;
+; Registers[5][0]                         ; Merged with Registers[1][10]           ;
+; Registers[5][10]                        ; Merged with Registers[1][10]           ;
+; Registers[5][11]                        ; Merged with Registers[1][10]           ;
+; Registers[5][12]                        ; Merged with Registers[1][10]           ;
+; Registers[5][13]                        ; Merged with Registers[1][10]           ;
+; Registers[5][14]                        ; Merged with Registers[1][10]           ;
+; Registers[5][15]                        ; Merged with Registers[1][10]           ;
+; Registers[5][16]                        ; Merged with Registers[1][10]           ;
+; Registers[5][17]                        ; Merged with Registers[1][10]           ;
+; Registers[5][18]                        ; Merged with Registers[1][10]           ;
+; Registers[5][19]                        ; Merged with Registers[1][10]           ;
+; Registers[5][1]                         ; Merged with Registers[1][10]           ;
+; Registers[5][20]                        ; Merged with Registers[1][10]           ;
+; Registers[5][21]                        ; Merged with Registers[1][10]           ;
+; Registers[5][22]                        ; Merged with Registers[1][10]           ;
+; Registers[5][23]                        ; Merged with Registers[1][10]           ;
+; Registers[5][24]                        ; Merged with Registers[1][10]           ;
+; Registers[5][25]                        ; Merged with Registers[1][10]           ;
+; Registers[5][26]                        ; Merged with Registers[1][10]           ;
+; Registers[5][27]                        ; Merged with Registers[1][10]           ;
+; Registers[5][28]                        ; Merged with Registers[1][10]           ;
+; Registers[5][29]                        ; Merged with Registers[1][10]           ;
+; Registers[5][30]                        ; Merged with Registers[1][10]           ;
+; Registers[5][31]                        ; Merged with Registers[1][10]           ;
+; Registers[5][3]                         ; Merged with Registers[1][10]           ;
+; Registers[5][4]                         ; Merged with Registers[1][10]           ;
+; Registers[5][5]                         ; Merged with Registers[1][10]           ;
+; Registers[5][6]                         ; Merged with Registers[1][10]           ;
+; Registers[5][8]                         ; Merged with Registers[1][10]           ;
+; Registers[5][9]                         ; Merged with Registers[1][10]           ;
+; Registers[6][0]                         ; Merged with Registers[1][10]           ;
+; Registers[6][10]                        ; Merged with Registers[1][10]           ;
+; Registers[6][11]                        ; Merged with Registers[1][10]           ;
+; Registers[6][12]                        ; Merged with Registers[1][10]           ;
+; Registers[6][13]                        ; Merged with Registers[1][10]           ;
+; Registers[6][14]                        ; Merged with Registers[1][10]           ;
+; Registers[6][15]                        ; Merged with Registers[1][10]           ;
+; Registers[6][16]                        ; Merged with Registers[1][10]           ;
+; Registers[6][17]                        ; Merged with Registers[1][10]           ;
+; Registers[6][18]                        ; Merged with Registers[1][10]           ;
+; Registers[6][19]                        ; Merged with Registers[1][10]           ;
+; Registers[6][1]                         ; Merged with Registers[1][10]           ;
+; Registers[6][20]                        ; Merged with Registers[1][10]           ;
+; Registers[6][21]                        ; Merged with Registers[1][10]           ;
+; Registers[6][22]                        ; Merged with Registers[1][10]           ;
+; Registers[6][23]                        ; Merged with Registers[1][10]           ;
+; Registers[6][24]                        ; Merged with Registers[1][10]           ;
+; Registers[6][25]                        ; Merged with Registers[1][10]           ;
+; Registers[6][26]                        ; Merged with Registers[1][10]           ;
+; Registers[6][27]                        ; Merged with Registers[1][10]           ;
+; Registers[6][28]                        ; Merged with Registers[1][10]           ;
+; Registers[6][29]                        ; Merged with Registers[1][10]           ;
+; Registers[6][30]                        ; Merged with Registers[1][10]           ;
+; Registers[6][31]                        ; Merged with Registers[1][10]           ;
+; Registers[6][4]                         ; Merged with Registers[1][10]           ;
+; Registers[6][5]                         ; Merged with Registers[1][10]           ;
+; Registers[6][6]                         ; Merged with Registers[1][10]           ;
+; Registers[6][8]                         ; Merged with Registers[1][10]           ;
+; Registers[6][9]                         ; Merged with Registers[1][10]           ;
+; Registers[7][0]                         ; Merged with Registers[1][10]           ;
+; Registers[7][10]                        ; Merged with Registers[1][10]           ;
+; Registers[7][11]                        ; Merged with Registers[1][10]           ;
+; Registers[7][12]                        ; Merged with Registers[1][10]           ;
+; Registers[7][13]                        ; Merged with Registers[1][10]           ;
+; Registers[7][14]                        ; Merged with Registers[1][10]           ;
+; Registers[7][15]                        ; Merged with Registers[1][10]           ;
+; Registers[7][16]                        ; Merged with Registers[1][10]           ;
+; Registers[7][17]                        ; Merged with Registers[1][10]           ;
+; Registers[7][18]                        ; Merged with Registers[1][10]           ;
+; Registers[7][19]                        ; Merged with Registers[1][10]           ;
+; Registers[7][20]                        ; Merged with Registers[1][10]           ;
+; Registers[7][21]                        ; Merged with Registers[1][10]           ;
+; Registers[7][22]                        ; Merged with Registers[1][10]           ;
+; Registers[7][23]                        ; Merged with Registers[1][10]           ;
+; Registers[7][24]                        ; Merged with Registers[1][10]           ;
+; Registers[7][25]                        ; Merged with Registers[1][10]           ;
+; Registers[7][26]                        ; Merged with Registers[1][10]           ;
+; Registers[7][27]                        ; Merged with Registers[1][10]           ;
+; Registers[7][28]                        ; Merged with Registers[1][10]           ;
+; Registers[7][29]                        ; Merged with Registers[1][10]           ;
+; Registers[7][2]                         ; Merged with Registers[1][10]           ;
+; Registers[7][30]                        ; Merged with Registers[1][10]           ;
+; Registers[7][31]                        ; Merged with Registers[1][10]           ;
+; Registers[7][4]                         ; Merged with Registers[1][10]           ;
+; Registers[7][6]                         ; Merged with Registers[1][10]           ;
+; Registers[7][8]                         ; Merged with Registers[1][10]           ;
+; Registers[7][9]                         ; Merged with Registers[1][10]           ;
+; Registers[2][1]                         ; Merged with Registers[1][0]            ;
+; Registers[3][0]                         ; Merged with Registers[1][0]            ;
+; Registers[3][1]                         ; Merged with Registers[1][0]            ;
+; Registers[4][2]                         ; Merged with Registers[1][0]            ;
+; Registers[5][2]                         ; Merged with Registers[1][0]            ;
+; Registers[5][7]                         ; Merged with Registers[1][0]            ;
+; Registers[6][2]                         ; Merged with Registers[1][0]            ;
+; Registers[6][3]                         ; Merged with Registers[1][0]            ;
+; Registers[6][7]                         ; Merged with Registers[1][0]            ;
+; Registers[7][1]                         ; Merged with Registers[1][0]            ;
+; Registers[7][3]                         ; Merged with Registers[1][0]            ;
+; Registers[7][5]                         ; Merged with Registers[1][0]            ;
+; Registers[7][7]                         ; Merged with Registers[1][0]            ;
+; Registers[1][10]                        ; Stuck at GND due to stuck port data_in ;
+; Registers[1][0]                         ; Stuck at VCC due to stuck port data_in ;
+; icount[24..31]                          ; Lost fanout                            ;
+; Total Number of Removed Registers = 232 ;                                        ;
++-----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 440   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 24    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 416   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; DataMemory:My_DataMemory|RAM[0][1]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][2]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][2]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][3]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][3]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[0][3]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][4]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][5]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[0][5]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][6]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][7]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][7]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[0][7]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][8]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][9]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[0][9]      ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][10]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][11]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][11]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[0][11]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][12]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][13]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[0][13]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][14]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][15]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][15]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[0][15]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][16]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][16]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][17]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][17]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[0][17]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[1][19]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[2][19]     ; 1       ;
+; DataMemory:My_DataMemory|RAM[0][19]     ; 1       ;
+; Total number of inverted registers = 35 ;         ;
++-----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; 64:1               ; 7 bits    ; 294 LEs       ; 21 LEs               ; 273 LEs                ; Yes        ; |debug|Registers[0][28]                            ;
+; 32:1               ; 4 bits    ; 84 LEs        ; 4 LEs                ; 80 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[0][6]          ;
+; 32:1               ; 3 bits    ; 63 LEs        ; 3 LEs                ; 60 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[1][6]          ;
+; 32:1               ; 4 bits    ; 84 LEs        ; 4 LEs                ; 80 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[2][5]          ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[3][6]          ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[4][3]          ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[5][6]          ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[6][6]          ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[7][6]          ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[8][1]          ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[9][4]          ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[10][0]         ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[11][0]         ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[12][1]         ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[13][0]         ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[14][3]         ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 8 LEs                ; 160 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[15][1]         ;
+; 34:1               ; 5 bits    ; 110 LEs       ; 5 LEs                ; 105 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[0][20]         ;
+; 34:1               ; 5 bits    ; 110 LEs       ; 5 LEs                ; 105 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[0][14]         ;
+; 34:1               ; 5 bits    ; 110 LEs       ; 5 LEs                ; 105 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[1][22]         ;
+; 34:1               ; 2 bits    ; 44 LEs        ; 2 LEs                ; 42 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[1][14]         ;
+; 34:1               ; 5 bits    ; 110 LEs       ; 5 LEs                ; 105 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[2][23]         ;
+; 34:1               ; 4 bits    ; 88 LEs        ; 4 LEs                ; 84 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[2][12]         ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[3][19]         ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[3][14]         ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[4][17]         ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[4][13]         ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[5][19]         ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[5][15]         ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[6][19]         ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[6][12]         ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[7][22]         ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[7][11]         ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[8][17]         ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[8][14]         ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[9][23]         ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[9][9]          ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[10][17]        ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[10][15]        ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[11][23]        ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[11][11]        ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[12][21]        ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[12][12]        ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[13][21]        ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[13][16]        ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[14][20]        ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[14][9]         ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 7 LEs                ; 147 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[15][21]        ;
+; 34:1               ; 9 bits    ; 198 LEs       ; 9 LEs                ; 189 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[15][15]        ;
+; 32:1               ; 4 bits    ; 84 LEs        ; 4 LEs                ; 80 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[0][5]          ;
+; 32:1               ; 5 bits    ; 105 LEs       ; 5 LEs                ; 100 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[1][5]          ;
+; 32:1               ; 4 bits    ; 84 LEs        ; 4 LEs                ; 80 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[2][2]          ;
+; 34:1               ; 2 bits    ; 44 LEs        ; 4 LEs                ; 40 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[0][17]         ;
+; 34:1               ; 4 bits    ; 88 LEs        ; 8 LEs                ; 80 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[0][9]          ;
+; 34:1               ; 2 bits    ; 44 LEs        ; 4 LEs                ; 40 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[1][17]         ;
+; 34:1               ; 7 bits    ; 154 LEs       ; 14 LEs               ; 140 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[1][15]         ;
+; 34:1               ; 2 bits    ; 44 LEs        ; 4 LEs                ; 40 LEs                 ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[2][17]         ;
+; 34:1               ; 5 bits    ; 110 LEs       ; 10 LEs               ; 100 LEs                ; Yes        ; |debug|DataMemory:My_DataMemory|RAM[2][15]         ;
+; 8:1                ; 6 bits    ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |debug|Mux31                                       ;
+; 8:1                ; 6 bits    ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |debug|Mux63                                       ;
+; 16:1               ; 3 bits    ; 30 LEs        ; 21 LEs               ; 9 LEs                  ; No         ; |debug|plusone5[1]                                 ;
+; 17:1               ; 10 bits   ; 110 LEs       ; 60 LEs               ; 50 LEs                 ; No         ; |debug|plusone2[2]                                 ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 12 LEs               ; 10 LEs                 ; No         ; |debug|plusone1[0]                                 ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 66 LEs               ; 0 LEs                  ; No         ; |debug|DataMemory:My_DataMemory|Mux558             ;
+; 64:1               ; 31 bits   ; 1302 LEs      ; 62 LEs               ; 1240 LEs               ; No         ; |debug|ALU_32:My_ALU_32|ALU:\alubits:24:ALU_i|Mux1 ;
+; 64:1               ; 26 bits   ; 1092 LEs      ; 104 LEs              ; 988 LEs                ; No         ; |debug|ALU_32:My_ALU_32|ALU:\alubits:23:ALU_i|Mux0 ;
+; 64:1               ; 23 bits   ; 966 LEs       ; 46 LEs               ; 920 LEs                ; No         ; |debug|ALU_32:My_ALU_32|Mux21                      ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 22 LEs               ; 2 LEs                  ; No         ; |debug|DataMemory:My_DataMemory|Mux569             ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; No         ; |debug|plusone4[3]                                 ;
+; 36:1               ; 3 bits    ; 72 LEs        ; 12 LEs               ; 60 LEs                 ; No         ; |debug|ALU_32:My_ALU_32|ALU:\alubits:1:ALU_i|Mux0  ;
+; 43:1               ; 7 bits    ; 196 LEs       ; 77 LEs               ; 119 LEs                ; No         ; |debug|DataMemory:My_DataMemory|Mux573             ;
+; 45:1               ; 5 bits    ; 150 LEs       ; 55 LEs               ; 95 LEs                 ; No         ; |debug|DataMemory:My_DataMemory|Mux562             ;
+; 20:1               ; 2 bits    ; 26 LEs        ; 24 LEs               ; 2 LEs                  ; No         ; |debug|DataMemory:My_DataMemory|Mux564             ;
+; 21:1               ; 2 bits    ; 28 LEs        ; 26 LEs               ; 2 LEs                  ; No         ; |debug|DataMemory:My_DataMemory|Mux560             ;
+; 15:1               ; 4 bits    ; 40 LEs        ; 24 LEs               ; 16 LEs                 ; No         ; |debug|plusone0[1]                                 ;
+; 23:1               ; 3 bits    ; 45 LEs        ; 12 LEs               ; 33 LEs                 ; No         ; |debug|ALU_32:My_ALU_32|ALU:\alubits:2:ALU_i|Mux0  ;
+; 13:1               ; 7 bits    ; 56 LEs        ; 49 LEs               ; 7 LEs                  ; No         ; |debug|ALU_32:My_ALU_32|Mux43                      ;
+; 16:1               ; 6 bits    ; 60 LEs        ; 48 LEs               ; 12 LEs                 ; No         ; |debug|ALU_32:My_ALU_32|Mux55                      ;
+; 15:1               ; 4 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; No         ; |debug|ALU_32:My_ALU_32|Mux41                      ;
+; 18:1               ; 3 bits    ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; No         ; |debug|ALU_32:My_ALU_32|Mux59                      ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 18 LEs               ; 4 LEs                  ; No         ; |debug|ALU_32:My_ALU_32|Mux3                       ;
+; 20:1               ; 2 bits    ; 26 LEs        ; 20 LEs               ; 6 LEs                  ; No         ; |debug|ALU_32:My_ALU_32|Mux63                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DataMemory:My_DataMemory"                                                                            ;
++-----------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                  ; Type   ; Severity ; Details                                                                             ;
++-----------------------+--------+----------+-------------------------------------------------------------------------------------+
+; memory_out_dm[31..24] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_32:My_ALU_32|ALU:\alubits:31:ALU_i"                                                     ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; carryout_alu ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_32:My_ALU_32"                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; a_cons[31..5]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b_cons[31..5]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; overflow_alu32 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; zero_alu32     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 65                          ;
+; cycloneiii_ff         ; 440                         ;
+;     CLR               ; 24                          ;
+;     ENA               ; 415                         ;
+;     ENA SLD           ; 1                           ;
+; cycloneiii_lcell_comb ; 1969                        ;
+;     arith             ; 115                         ;
+;         2 data inputs ; 21                          ;
+;         3 data inputs ; 94                          ;
+;     normal            ; 1854                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 97                          ;
+;         3 data inputs ; 420                         ;
+;         4 data inputs ; 1328                        ;
+;                       ;                             ;
+; Max LUT depth         ; 42.00                       ;
+; Average LUT depth     ; 21.11                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:08     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Wed Nov  6 18:05:58 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off debug -c debug
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file debug.vhd
+    Info (12022): Found design unit 1: debug-rtl File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 26
+    Info (12023): Found entity 1: debug File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: ALU-behavioural File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 17
+    Info (12023): Found entity 1: ALU File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file hex.vhd
+    Info (12022): Found design unit 1: hex-behavioural File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/hex.vhd Line: 11
+    Info (12023): Found entity 1: hex File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/hex.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file alu_32.vhd
+    Info (12022): Found design unit 1: ALU_32-behavioural File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 19
+    Info (12023): Found entity 1: ALU_32 File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file instructionmemory.vhd
+    Info (12022): Found design unit 1: Instruction_Memory-Behavioral File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/InstructionMemory.vhd Line: 12
+    Info (12023): Found entity 1: Instruction_Memory File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/InstructionMemory.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file datamemory.vhd
+    Info (12022): Found design unit 1: DataMemory-Behavioral File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 18
+    Info (12023): Found entity 1: DataMemory File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 6
+Info (12127): Elaborating entity "debug" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at debug.vhd(15): used implicit default value for signal "LEDR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+Warning (10036): Verilog HDL or VHDL warning at debug.vhd(73): object "plusone6" assigned a value but never read File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 73
+Warning (10036): Verilog HDL or VHDL warning at debug.vhd(74): object "plusone7" assigned a value but never read File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 74
+Warning (10036): Verilog HDL or VHDL warning at debug.vhd(86): object "overflow" assigned a value but never read File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 86
+Warning (10036): Verilog HDL or VHDL warning at debug.vhd(87): object "isZero" assigned a value but never read File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 87
+Warning (10492): VHDL Process Statement warning at debug.vhd(300): signal "sw0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 300
+Warning (10492): VHDL Process Statement warning at debug.vhd(309): signal "sw0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 309
+Warning (10492): VHDL Process Statement warning at debug.vhd(318): signal "sw0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 318
+Warning (10492): VHDL Process Statement warning at debug.vhd(327): signal "sw0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 327
+Warning (10492): VHDL Process Statement warning at debug.vhd(328): signal "Registers" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 328
+Warning (10492): VHDL Process Statement warning at debug.vhd(329): signal "Registers" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 329
+Warning (10492): VHDL Process Statement warning at debug.vhd(330): signal "Registers" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 330
+Warning (10492): VHDL Process Statement warning at debug.vhd(331): signal "Registers" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 331
+Warning (10492): VHDL Process Statement warning at debug.vhd(332): signal "Registers" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 332
+Warning (10492): VHDL Process Statement warning at debug.vhd(333): signal "Registers" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 333
+Warning (10492): VHDL Process Statement warning at debug.vhd(334): signal "Registers" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 334
+Warning (10492): VHDL Process Statement warning at debug.vhd(335): signal "Registers" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 335
+Warning (10492): VHDL Process Statement warning at debug.vhd(336): signal "sw0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 336
+Warning (10492): VHDL Process Statement warning at debug.vhd(337): signal "instruction" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 337
+Warning (10492): VHDL Process Statement warning at debug.vhd(338): signal "instruction" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 338
+Warning (10492): VHDL Process Statement warning at debug.vhd(339): signal "instruction" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 339
+Warning (10492): VHDL Process Statement warning at debug.vhd(340): signal "instruction" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 340
+Warning (10492): VHDL Process Statement warning at debug.vhd(341): signal "instruction" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 341
+Warning (10492): VHDL Process Statement warning at debug.vhd(342): signal "instruction" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 342
+Warning (10492): VHDL Process Statement warning at debug.vhd(343): signal "instruction" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 343
+Warning (10492): VHDL Process Statement warning at debug.vhd(344): signal "instruction" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 344
+Warning (10492): VHDL Process Statement warning at debug.vhd(345): signal "sw0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 345
+Warning (10492): VHDL Process Statement warning at debug.vhd(346): signal "memread" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 346
+Warning (10492): VHDL Process Statement warning at debug.vhd(347): signal "memread" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 347
+Warning (10492): VHDL Process Statement warning at debug.vhd(348): signal "memread" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 348
+Warning (10492): VHDL Process Statement warning at debug.vhd(349): signal "memread" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 349
+Warning (10492): VHDL Process Statement warning at debug.vhd(350): signal "memread" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 350
+Warning (10492): VHDL Process Statement warning at debug.vhd(351): signal "memread" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 351
+Warning (10492): VHDL Process Statement warning at debug.vhd(352): signal "memread" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 352
+Warning (10492): VHDL Process Statement warning at debug.vhd(353): signal "memread" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 353
+Warning (10492): VHDL Process Statement warning at debug.vhd(354): signal "sw0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 354
+Warning (10492): VHDL Process Statement warning at debug.vhd(355): signal "const" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 355
+Warning (10492): VHDL Process Statement warning at debug.vhd(356): signal "const" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 356
+Warning (10492): VHDL Process Statement warning at debug.vhd(357): signal "const" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 357
+Warning (10492): VHDL Process Statement warning at debug.vhd(358): signal "const" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 358
+Warning (10492): VHDL Process Statement warning at debug.vhd(359): signal "const" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 359
+Warning (10492): VHDL Process Statement warning at debug.vhd(360): signal "const" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 360
+Warning (10492): VHDL Process Statement warning at debug.vhd(361): signal "const" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 361
+Warning (10492): VHDL Process Statement warning at debug.vhd(362): signal "const" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 362
+Warning (10492): VHDL Process Statement warning at debug.vhd(363): signal "sw0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 363
+Warning (10492): VHDL Process Statement warning at debug.vhd(364): signal "immed" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 364
+Warning (10492): VHDL Process Statement warning at debug.vhd(365): signal "immed" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 365
+Warning (10492): VHDL Process Statement warning at debug.vhd(366): signal "immed" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 366
+Warning (10492): VHDL Process Statement warning at debug.vhd(367): signal "immed" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 367
+Warning (10492): VHDL Process Statement warning at debug.vhd(368): signal "sw0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 368
+Warning (10492): VHDL Process Statement warning at debug.vhd(369): signal "icount" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 369
+Warning (10492): VHDL Process Statement warning at debug.vhd(370): signal "icount" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 370
+Warning (10492): VHDL Process Statement warning at debug.vhd(371): signal "icount" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 371
+Warning (10492): VHDL Process Statement warning at debug.vhd(372): signal "icount" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 372
+Warning (10492): VHDL Process Statement warning at debug.vhd(373): signal "icount" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 373
+Warning (10492): VHDL Process Statement warning at debug.vhd(374): signal "icount" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 374
+Warning (10492): VHDL Process Statement warning at debug.vhd(375): signal "icount" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 375
+Warning (10492): VHDL Process Statement warning at debug.vhd(376): signal "icount" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 376
+Warning (10631): VHDL Process Statement warning at debug.vhd(289): inferring latch(es) for signal or variable "plusone4", which holds its previous value in one or more paths through the process File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+Warning (10631): VHDL Process Statement warning at debug.vhd(289): inferring latch(es) for signal or variable "plusone5", which holds its previous value in one or more paths through the process File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+Info (10041): Inferred latch for "plusone5[0]" at debug.vhd(289) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+Info (10041): Inferred latch for "plusone5[1]" at debug.vhd(289) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+Info (10041): Inferred latch for "plusone5[2]" at debug.vhd(289) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+Info (10041): Inferred latch for "plusone5[3]" at debug.vhd(289) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+Info (10041): Inferred latch for "plusone4[0]" at debug.vhd(289) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+Info (10041): Inferred latch for "plusone4[1]" at debug.vhd(289) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+Info (10041): Inferred latch for "plusone4[2]" at debug.vhd(289) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+Info (10041): Inferred latch for "plusone4[3]" at debug.vhd(289) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+Info (12128): Elaborating entity "ALU_32" for hierarchy "ALU_32:My_ALU_32" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 161
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(80): signal "ALU_Output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 80
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(80): signal "B_cons" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 80
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(81): signal "set" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 81
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(83): signal "ALU_Output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 83
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(83): signal "B_cons" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 83
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(84): signal "set" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 84
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(86): signal "ALU_Output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 86
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(86): signal "B_cons" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 86
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(87): signal "set" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 87
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(89): signal "ALU_Output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 89
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(90): signal "set" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 90
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(92): signal "ALU_Output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 92
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(93): signal "set" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 93
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(95): signal "ALU_Output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 95
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(96): signal "set" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 96
+Warning (10492): VHDL Process Statement warning at alu_32.vhd(116): signal "ALU_Output" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 116
+Warning (10631): VHDL Process Statement warning at alu_32.vhd(76): inferring latch(es) for signal or variable "set", which holds its previous value in one or more paths through the process File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[0]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[1]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[2]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[3]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[4]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[5]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[6]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[7]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[8]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[9]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[10]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[11]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[12]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[13]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[14]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[15]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[16]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[17]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[18]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[19]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[20]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[21]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[22]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[23]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[24]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[25]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[26]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[27]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[28]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[29]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[30]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (10041): Inferred latch for "set[31]" at alu_32.vhd(76) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU_32:My_ALU_32|ALU:ALU_0" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 48
+Warning (10541): VHDL Signal Declaration warning at alu.vhd(19): used implicit default value for signal "a_in" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 19
+Warning (10541): VHDL Signal Declaration warning at alu.vhd(19): used implicit default value for signal "b_in" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 19
+Warning (10492): VHDL Process Statement warning at alu.vhd(25): signal "A_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 25
+Warning (10492): VHDL Process Statement warning at alu.vhd(25): signal "B_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 25
+Warning (10492): VHDL Process Statement warning at alu.vhd(27): signal "A_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 27
+Warning (10492): VHDL Process Statement warning at alu.vhd(27): signal "B_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 27
+Warning (10492): VHDL Process Statement warning at alu.vhd(29): signal "A_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 29
+Warning (10492): VHDL Process Statement warning at alu.vhd(29): signal "B_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 29
+Warning (10492): VHDL Process Statement warning at alu.vhd(31): signal "A_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 31
+Warning (10492): VHDL Process Statement warning at alu.vhd(31): signal "B_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 31
+Warning (10492): VHDL Process Statement warning at alu.vhd(33): signal "A_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 33
+Warning (10492): VHDL Process Statement warning at alu.vhd(33): signal "B_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 33
+Warning (10492): VHDL Process Statement warning at alu.vhd(33): signal "carryin_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 33
+Warning (10492): VHDL Process Statement warning at alu.vhd(35): signal "A_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 35
+Warning (10492): VHDL Process Statement warning at alu.vhd(35): signal "B_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 35
+Warning (10492): VHDL Process Statement warning at alu.vhd(35): signal "carryin_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 35
+Warning (10492): VHDL Process Statement warning at alu.vhd(45): signal "A_alu" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu.vhd Line: 45
+Info (12128): Elaborating entity "Instruction_Memory" for hierarchy "Instruction_Memory:My_Instruction_Memory" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 173
+Info (12128): Elaborating entity "DataMemory" for hierarchy "DataMemory:My_DataMemory" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 179
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(95): signal "memory_read_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 95
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(96): signal "RAM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 96
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(96): signal "memory_address_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 96
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(99): signal "memory_read_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 99
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(100): signal "RAM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 100
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(100): signal "memory_address_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 100
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(103): signal "memory_read_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 103
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(104): signal "RAM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 104
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(104): signal "memory_address_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 104
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(105): signal "RAM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 105
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(105): signal "memory_address_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 105
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(107): signal "RAM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 107
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(107): signal "memory_address_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 107
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(112): signal "memory_read_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 112
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(113): signal "RAM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 113
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(113): signal "memory_address_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 113
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(116): signal "memory_read_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 116
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(117): signal "RAM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 117
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(117): signal "memory_address_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 117
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(118): signal "RAM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 118
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(118): signal "memory_address_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 118
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(120): signal "RAM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 120
+Warning (10492): VHDL Process Statement warning at DataMemory.vhd(120): signal "memory_address_dm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 120
+Warning (10631): VHDL Process Statement warning at DataMemory.vhd(91): inferring latch(es) for signal or variable "memory_out_dm", which holds its previous value in one or more paths through the process File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[0]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[1]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[2]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[3]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[4]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[5]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[6]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[7]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[8]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[9]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[10]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[11]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[12]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[13]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[14]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[15]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[16]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[17]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[18]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[19]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[20]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[21]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[22]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[23]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[24]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[25]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[26]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[27]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[28]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[29]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[30]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (10041): Inferred latch for "memory_out_dm[31]" at DataMemory.vhd(91) File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Info (12128): Elaborating entity "hex" for hierarchy "hex:h0" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 430
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[3]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[2]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[1]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[0]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[7]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[6]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[5]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[4]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[11]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[10]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[9]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[8]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[15]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[14]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[13]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[12]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[19]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[18]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[17]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[16]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[23]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[22]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[21]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (14026): LATCH primitive "DataMemory:My_DataMemory|memory_out_dm[20]" is permanently enabled File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/DataMemory.vhd Line: 91
+Warning (13012): Latch ALU_32:My_ALU_32|set[0] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[1] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[2] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[3] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[4] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[5] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[6] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[7] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[8] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[9] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[10] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[11] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[12] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[13] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[14] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[15] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch plusone4[0] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[0] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+Warning (13012): Latch plusone4[1] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[0] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+Warning (13012): Latch plusone4[2] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[0] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+Warning (13012): Latch plusone4[3] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[0] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+Warning (13012): Latch plusone5[0] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[0] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+Warning (13012): Latch plusone5[1] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[0] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+Warning (13012): Latch plusone5[2] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[0] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+Warning (13012): Latch plusone5[3] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 289
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[0] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+Warning (13012): Latch ALU_32:My_ALU_32|set[31] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[0] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[30] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[29] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[28] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[27] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[26] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[25] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[24] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[23] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[22] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[2] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[21] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[2] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[20] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[2] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[19] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[2] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[18] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[2] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[17] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[2] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13012): Latch ALU_32:My_ALU_32|set[16] has unsafe behavior File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/alu_32.vhd Line: 76
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal icount[4] File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 393
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 15
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 8 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 7 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK_50" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 12
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/mrpap/OneDrive/Desktop/Lectures/Adv Comp Architecture/Nov6/debug.vhd Line: 14
+Info (21057): Implemented 2428 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 52 output pins
+    Info (21061): Implemented 2363 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 242 warnings
+    Info: Peak virtual memory: 4888 megabytes
+    Info: Processing ended: Wed Nov  6 18:06:19 2024
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:16
+
+

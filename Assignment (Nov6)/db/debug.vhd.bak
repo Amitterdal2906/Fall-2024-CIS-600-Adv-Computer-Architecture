@@ -1,0 +1,248 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
+library work;
+use work.all;
+
+
+  
+entity debug is
+    port (
+          CLOCK_50: in std_logic;                   -- 50MHz clock in the DE10_Lite board
+          KEY: in std_logic_vector (1 downto 0);    -- keys or buttons (KEY(0)- KEY(1))
+          SW: in std_logic_vector (9 downto 0);     -- switches (SW(9) 0 SW(0))
+          LEDR: out std_logic_vector (9 downto 0);  -- led's
+          HEX0: out std_logic_vector (6 downto 0);	 -- 7-segment display, digit 0
+          HEX1: out std_logic_vector (6 downto 0);	 -- 7-segment display, digit 1
+          HEX2: out std_logic_vector (6 downto 0);	 -- 7-segment display, digit 2
+          HEX3: out std_logic_vector (6 downto 0);	 -- 7-segment display, digit 3
+          HEX4: out std_logic_vector (6 downto 0);	 -- 7-segment display, digit 3
+          HEX5: out std_logic_vector (6 downto 0)
+			 );	  
+
+end entity;
+	 
+architecture rtl of debug is
+  component ALU_32
+    port(
+        A_alu32 : in std_logic_vector(31 downto 0);  		  -- A input
+        B_alu32 : in std_logic_vector(31 downto 0);  		  -- B input
+        ALUfunct_alu32 : in std_logic_vector(5 downto 0);    -- control
+        ALUout_alu32 : out std_logic_vector(31 downto 0);  -- result
+        overflow_alu32: out std_logic;  						  -- check if ALU overflowed
+        Zero_alu32 : out std_logic  							  -- check if ALUout is zero
+        );
+  end component;
+
+  signal icount            : std_logic_vector (31 downto 0) := (others => '0');
+  signal  reset          	: std_logic;
+  signal  clock	   		: std_logic;
+  signal counter_set       : std_logic := '0';
+  signal flipflops         : std_logic_vector(1 downto 0) := (others => '0');
+  signal clk_divide_count1 : std_logic_vector(31 downto 0) := (others => '0'); 	
+  signal slow_clk1 		   : std_logic := '0';	
+  signal counter_out       : std_logic_vector(31 downto 0) := (others => '0'); 	
+  constant counter_size    : Integer := 16;
+  signal plusone0           : STD_LOGIC_VECTOR (3 downto 0);	-- this is for 7-segment display
+  signal plusone1          : STD_LOGIC_VECTOR (3 downto 0);	-- this is for 7-segment display
+  signal plusone2          : STD_LOGIC_VECTOR (3 downto 0);	-- this is for 7-segment display
+  signal plusone3          : STD_LOGIC_VECTOR (3 downto 0);	-- this is for 7-segment display
+  signal plusone4          : STD_LOGIC_VECTOR (3 downto 0);	-- this is for 7-segment display
+  signal plusone5          : STD_LOGIC_VECTOR (3 downto 0);	-- this is for 7-segment display
+  signal plusone6          : STD_LOGIC_VECTOR (3 downto 0);	-- this is for 7-segment display
+  signal plusone7          : STD_LOGIC_VECTOR (3 downto 0);	-- this is for 7-segment display
+  signal sw0               : STD_LOGIC_VECTOR (2 downto 0);
+  signal rs                : STD_LOGIC_VECTOR (2 downto 0);
+  signal rt                : STD_LOGIC_VECTOR (2 downto 0);
+  signal rd                : STD_LOGIC_VECTOR (2 downto 0);
+  signal funct             : STD_LOGIC_VECTOR (5 downto 0);
+  signal val1              : std_logic_vector (31 downto 0);   
+  signal val2              : std_logic_vector (31 downto 0);
+  signal result            : std_logic_vector (31 downto 0);    
+  signal overflow          : std_logic;
+  signal isZero            : std_logic;
+  signal instruction       : std_logic_vector (14 downto 0);
+  
+  type register_type is array (0 to 7) of std_logic_vector(31 downto 0);
+  signal Registers : register_type := (
+   		0 => x"00000000", 
+   		1 => x"00000001", 
+   		2 => x"00000002", 
+   		3 => x"00000003", 
+			4 => x"00000004",
+			5 => x"00000084",
+			6 => x"0000008c",
+			7 => x"000000aa");
+  
+  type instruction_type is array (0 to 7) of std_logic_vector(14 downto 0);
+  signal Instructions : instruction_type := (
+   		0 => "001010000100000", 
+   		1 => "010011000100000", 
+   		2 => "011100000100100", 
+   		3 => "011100000100101", 
+			4 => "011100000100110",
+			5 => "011100000100111",
+			6 => "010001000100010",
+			7 => "011001000100010");
+  
+
+begin
+My_ALU_32 : ALU_32
+  port map (
+        A_alu32 => val1,
+        B_alu32 => val2,
+        ALUfunct_alu32 => funct,
+        ALUout_alu32 => result,
+        overflow_alu32 => overflow,
+        Zero_alu32 => isZero
+		  );  
+  
+  reset <= NOT KEY(1);   -- KEY(1) is reset
+  instruction <= Instructions(to_integer(unsigned(icount)));
+  rs <= instruction(14 downto 12);
+--  rs <= Instructions(0)(14 downto 12);
+  rt <= instruction(11 downto 9);
+  rd <= instruction (8 downto 6);
+  funct <= instruction (5 downto 0);
+  val1 <= Registers(to_integer(unsigned(rs)));
+  val2 <= Registers(to_integer(unsigned(rt)));
+  sw0 <= sw(2 downto 0);
+  
+--*****************************************CLOCK***********************
+--*********************************************************************
+--option 1: key(0) as the clock (need a deboncing circuit)
+--option 2: slow clock (10Hz)
+--option 3: 50MHz clock
+
+
+--option 1: key(0) as the clock (need a deboncing circuit)
+-- reset (clock) key debouncing
+-- KEY(0) as the clock (because 50MHz is too fast)
+-- But it does not work okay; need debouncing circuit
+
+  clock <= NOT KEY(0);
+--  clock <= slow_clk1;
+  counter_set <= flipflops(0) xor flipflops(1);
+
+  process(CLOCK_50)
+  begin
+    if (CLOCK_50'event and CLOCK_50 = '1') then
+      flipflops(0) <= NOT KEY(0);
+      flipflops(1) <= flipflops(0);
+      if (counter_set = '1') then
+        counter_out <= (OTHERS => '0');
+      elsif (counter_out(counter_size) = '0') then
+        counter_out <= counter_out +1;
+      else
+        --clock <= flipflops(1);
+      end if;
+    end if;
+  end process;
+------ reset (clock) key debouncing
+
+
+--option 2: slow clock (10Hz)
+--clk <= slow_clk1;       -- 10Hz clock in the DE10_Lite board
+------ Slow clock begin ------
+  process(CLOCK_50)
+  begin
+ 	 if rising_edge(CLOCK_50) then
+		if (slow_clk1 = '0') then
+			if (clk_divide_count1 >= 200000000) then	--50MHz clock counting to 5 million, therefore slow clock will have period of 0.1s [(1/(50*10^6))*(5*10^6) = 0.1]
+				clk_divide_count1 <= (others => '0');	--Reset clock divider
+				slow_clk1 <= '1';				--Pulse slow_clk for 0.1 s
+			else
+				clk_divide_count1 <= clk_divide_count1 + 1 ;	--Increment clk_divide_count, NB this is not the output counter
+				--slow_clk1 <= '0';
+			end if;
+      end if;
+
+      if (slow_clk1 = '1') then
+		  if (clk_divide_count1 >= 200000000) then  	--50MHz clock counting to 5 million, therefore slow clock will have period of 0.1s [(1/(50*10^6))*(5*10^6) = 0.1]
+	       clk_divide_count1 <= (others => '0');	--Reset clock divider
+		    slow_clk1 <= '0';				--Pulse slow_clk for 0.1s
+	     else
+		    clk_divide_count1 <= clk_divide_count1 + 1 ;	--Increment clk_divide_count, NB this is not the output counter
+			 --slow_clk1 <= '1';
+		  end if;
+      end if;
+	 end if;
+  end process;
+------ Slow clock end ------
+
+		
+    process (reset, clock, val1, val2, result) 
+	 begin
+	 if (reset = '1') then
+             plusone0 <= "0000";
+             plusone1 <= "0000";
+             plusone2 <= "0000";
+             plusone3 <= "0000";
+             plusone4 <= "0000";
+             plusone5 <= "0000";
+             plusone6 <= "0000";
+             plusone7 <= "0000";		
+
+	 elsif (sw0 = "001") then 
+             plusone0 <= val1(3 downto 0);
+             plusone1 <= val1(7 downto 4);
+             plusone2 <= val1(11 downto 8);
+             plusone3 <= val1(15 downto 12);
+             plusone4 <= val1(19 downto 16);
+             plusone5 <= val1(23 downto 20);
+             plusone6 <= val1(27 downto 24);
+             plusone7 <= val1(31 downto 28);
+
+	 elsif (sw0 = "010") then 
+             plusone0 <= val2(3 downto 0);
+             plusone1 <= val2(7 downto 4);
+             plusone2 <= val2(11 downto 8);
+             plusone3 <= val2(15 downto 12);
+             plusone4 <= val2(19 downto 16);
+             plusone5 <= val2(23 downto 20);
+             plusone6 <= val2(27 downto 24);
+             plusone7 <= val2(31 downto 28);
+				 
+	 elsif (sw0 = "100") then 
+             plusone0 <= result(3 downto 0);
+             plusone1 <= result(7 downto 4);
+             plusone2 <= result(11 downto 8);
+             plusone3 <= result(15 downto 12);
+             plusone4 <= result(19 downto 16);
+             plusone5 <= result(23 downto 20);
+             plusone6 <= result(27 downto 24);
+             plusone7 <= result(31 downto 28);
+   else
+             plusone0 <= "0000";
+             plusone1 <= "0000";
+             plusone2 <= "0000";
+             plusone3 <= "0000";
+             plusone4 <= "0000";
+             plusone5 <= "0000";
+             plusone6 <= "0000";
+             plusone7 <= "0000";	
+		end if;
+	   --end if;
+  end process;
+
+  process (reset, clock) 
+
+	 begin
+	   if (reset = '1') then
+   	    icount <= x"00000000";
+		elsif (rising_edge(clock)) then
+		  icount <= icount + 1;
+		  Registers(to_integer(unsigned(rd))) <= result;
+--        instruction <= Instructions(to_integer(unsigned(icount)));
+		end if;
+  end process;
+	 
+    h0: hex port map(plusone0, o => hex0);      -- display on ledr(7:0) & hex5~0
+    h1: hex port map(plusone1, o => hex1);
+    h2: hex port map(plusone2, o => hex2);
+    h3: hex port map(plusone3, o => hex3); 
+    h4: hex port map(plusone4, o => hex4);    
+    h5: hex port map(plusone5, o => hex5);    
+	 
+end architecture;
